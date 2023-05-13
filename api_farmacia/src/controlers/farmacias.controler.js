@@ -14,10 +14,11 @@ const getFarmacia = async (req, res) => {
 //optener farmacia por id
 const getFarmaciaId = async (req, res) => {
    try {
-     // console.log(req.params);
+      console.log(req.params);
       const id = req.params;
       const connection = await getConnection();
       const result = await connection.query("SELECT * FROM farmacias WHERE  ?", id);
+      console.log(result.a_m_id);
       res.json(result);
    } catch (error) {
       res.status(500);
