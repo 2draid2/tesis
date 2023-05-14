@@ -1,8 +1,8 @@
 <template>
-  <hello-world />
+  <HelloWorld />
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue';
 
 // Components
