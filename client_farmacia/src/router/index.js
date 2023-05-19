@@ -6,7 +6,8 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    redirect: '/alert',
+    //component: HomeView
   },
   {
     path: '/service',
@@ -38,8 +39,8 @@ const routes = [
   },
   {
     path: '/:pathMatch(.*)',
-    name: 'bad-not-found',
-    component: NotFoundComponent, 
+    name: 'homeov',
+    component: HomeView, 
 }
 
 ]

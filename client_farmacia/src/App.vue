@@ -1,15 +1,12 @@
 <template>
-  <v-app theme="dark">
-    <v-container>
-           <v-main>
-            <nav-bar-comp app></nav-bar-comp>
-            <Footer app></Footer>
-           <nav-drawer></nav-drawer>
-             <router-view/>
-          </v-main> 
-        </v-container>
- 
-        
+  <v-app>
+    <nav-bar-comp app></nav-bar-comp>
+    <Footer app></Footer>
+      <nav-drawer></nav-drawer>
+    <v-main>
+      <router-view />
+    </v-main>
+
   </v-app>
 </template>
 
@@ -29,8 +26,9 @@ export default {
     NavBarComp,
     NavDrawer,
     Footer,
-   // NiceScroller
+    // NiceScroller
   },
+
   data: () => ({
     //
   }),

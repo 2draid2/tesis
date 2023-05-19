@@ -4,8 +4,10 @@ import morgan from "morgan";
 
 import farmaciaRoutes from "./router/farmacia.router";
 
+var cors = require('cors')
 
 const app = express();
+app.use(cors()),
 //settings
 app.set("port" , 4000);
 //middlewares

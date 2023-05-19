@@ -1,13 +1,14 @@
     <!--card lateral-->
 <template>
    <v-container>
-      <v-navigation-drawer v-bind:image="require('../../assets/back.jpg')" permanent>
+      <v-navigation-drawer permanent>
          <v-list nav>
-               <v-list-item prepend-avatar="https://randomuser.me/api/portraits/men/85.jpg" title="John Leider" nav>
+               <v-list-item v-bind:prepend-avatar="require('../../assets/'+ this.foto)" :title="enline" nav>
                   <template v-slot:append>
                   <v-btn
                   variant="text"
-                    icon="mdi-logout"
+                    icon="mdi-login"
+                    @click="usuario()"
                   ></v-btn>
                 </template>
                </v-list-item> 
@@ -24,12 +25,31 @@
    
 </template>
 <script>
+   import { mapState } from "vuex";
 
 export default {
    name: 'NavDrawer',
 
-   data: () => ({
-
+  data: () => ({
+        enline:'DRAID',
+        foto: 'DRAID.jpg',
    }),
+
+   computed: {
+
+       },
+
+
+       methods: {
+         ...mapState('auth',['user']),
+      
+        usuario() {  
+         this.enline= this.user().nombre
+         this.foto= this.enline+'.jpg'
+         console.log( this.user().nombre)
+               },
+       }
+
+ 
 }
 </script>

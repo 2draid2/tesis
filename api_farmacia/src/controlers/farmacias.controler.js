@@ -2,8 +2,22 @@ import { getConnection } from "./../database/database";
 //obtener todas las farmacias
 const getFarmacia = async (req, res) => {
    try {
+      const pos = parseInt(req.params.pos);
+   // console.log(pos);
       const connection = await getConnection();
-      const result = await connection.query("SELECT * FROM farmacias");
+      const result = await connection.query("SELECT * FROM farmacias WHERE f_id LIMIT ?, 25", pos);
+      res.json(result);
+   } catch (error) {
+      res.status(500);
+      res.send(error.message);
+   }
+};
+const getFarmacialg = async (req, res) => {
+   try {
+         console.log('poskvfgffdxddxdxdxdxdxdxdxdxdxdxdxd');
+      const connection = await getConnection();
+      const result = await connection.query("SELECT COUNT(*) AS len FROM farmacias");
+      console.log(result);
       res.json(result);
    } catch (error) {
       res.status(500);
@@ -14,11 +28,10 @@ const getFarmacia = async (req, res) => {
 //optener farmacia por id
 const getFarmaciaId = async (req, res) => {
    try {
-      console.log(req.params);
+      //console.log(req.params);
       const id = req.params;
       const connection = await getConnection();
       const result = await connection.query("SELECT * FROM farmacias WHERE  ?", id);
-      console.log(result.a_m_id);
       res.json(result);
    } catch (error) {
       res.status(500);
@@ -89,5 +102,6 @@ export const methods = {
    addFarmacia,
    getFarmaciaId,
    deleteFarmaciaId,
-   updateFarmaciaId
+   updateFarmaciaId,
+   getFarmacialg,
 }

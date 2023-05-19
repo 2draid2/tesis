@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-app-bar class="d-flex align-center" v-bind:image="require('../../assets/nav.jpg')">
+    <v-app-bar class="d-flex align-center">
       <v-btn>
         <v-icon height="48" color="yellow" left class="mr-2">mdi mdi-signature</v-icon>
         DRAID
@@ -16,7 +16,11 @@
           mdi mdi-magnify
         </v-icon>
       </v-btn>
-      <v-btn height="48" text to="/" class="">
+      <v-btn height="48" text @click="toggleTheme" class="">
+        <v-icon height="48" class="mr-2">
+          mdi mdi-brightness-6
+        </v-icon>
+      </v-btn>  <v-btn height="48" text to="/" class="">
         Home
       </v-btn>
       <v-btn height="48" text to="service">
@@ -40,10 +44,12 @@
  
 <script>
 import { VNavigationDrawer } from 'vuetify/lib/components';
+import { useTheme } from 'vuetify'
 
 
 export default {
   name: "NavBarComp",
+  
 
   data: () => ({
     loading: false,
@@ -55,6 +61,14 @@ export default {
     ],
   }),
 
+  setup () {
+    const theme = useTheme()
+
+    return {
+      theme,
+      toggleTheme: () => theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+    }
+  },
   methods: {
     searchbd() {
       setTimeout(() => (this.overlay = false, this.item_s = ""), 1500);

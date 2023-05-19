@@ -1,66 +1,62 @@
     <!--card lateral-->
-    <template>
-         <v-list>
-            <v-list-item >
-                 <v-card-text>
-                   <v-text-field
-                     :loading="loading"
-                     density="compact"
-                     variant="solo"
-                     label="Search pills"
-                     append-inner-icon="mdi-magnify"
-                     single-line
-                     hide-details
-                     @click:append-inner="onClick"
-                   ></v-text-field>
-                 </v-card-text>
-            </v-list-item>
+<template>
+<v-card>
+       <farm-serv v-on:select="selected"></farm-serv>
+</v-card>
+      <!--overlay para cargando...-->
+  <v-overlay :model-value="overlay" class="align-center justify-center">
+    <v-progress-circular color="primary" indeterminate size="64"></v-progress-circular>
+  </v-overlay>
+</template>
+<script>
+import store from '@/store';
+import { mapActions, mapMutations } from 'vuex';
+import FarmServ from "./subservice/FarmServComp.vue";
 
-            <v-list-item v-for="f,i in farm" :key="i"
-             :title='f.title' :value='f.values'></v-list-item>
+//import NiceScroller from '@/components/adds/ScrollerComp.vue';
 
-         </v-list>
+export default {
+  name: 'Serv',
 
+  components: {
+    FarmServ,
+  },
+  data: () => ({
+    farmlist: '',
+    params: { limit: 10, skip: 2, page: 1, paget: 1 },
+    overlay: false,
+    loaded: false,
+    loading: false,
+    id: 0
 
-             <!--overlay para cargando...-->
-             <v-overlay :model-value="overlay" class="align-center justify-center">
-               <v-progress-circular color="primary" indeterminate size="64"></v-progress-circular>
-             </v-overlay>
-   </template>
-   <script>
-   
-   export default {
-      name: 'Serv',
-      methods: {
-      onClick () {
-        this.loading = true
+  }),
 
-        setTimeout(() => {
-          this.loading = false
-          this.loaded = true
-          this.overlay=!this.overlay
-        }, 2000)
-      },
-   },
-      data: () => ({
-         farm:  [
-            {'title': '01' , 'values' : 'la foca'},
-            {'title': '02' , 'values' : 'la fg'},
-            {'title': '03' , 'values' : 'la ffg'},
-            {'title': '04' , 'values' : 'la gfd'},
-            {'title': '05' , 'values' : 'la ggggg'},
-            {'title': '06' , 'values' : 'la fddd'},
-            {'title': '07' , 'values' : 'la ddeee'},
-            {'title': '08' , 'values' : 'la eerr'},
-            {'title': '09' , 'values' : 'la gg'},
-            {'title': '10' , 'values' : 'la dff'},
-            {'title': '11' , 'values' : 'la wewe'},
-            {'title': '12' , 'values' : 'la wetrt'}
-      ],
-      overlay: false,
-      loaded: false,
-      loading: false,
-   
-      }),
-   }
-   </script>
+  created() {
+    this.cargar_datos()
+  },
+
+  methods: {
+    ...mapActions('farm', ['lister','leng']),
+    ...mapMutations('users', ['SET_USER_LIST']),
+    async cargar_datos() {
+      //
+      this.farmlist = await this.lister(this.params)
+      //users(this.farmlist),
+      console.log(store.state)
+    },
+    selected(select){
+       this.$emit('select', select);
+    },
+    onClick() {
+      this.loading = true
+
+      setTimeout(() => {
+        this.loading = false
+        this.loaded = true
+        this.overlay = !this.overlay
+      }, 2000)
+    },
+  },
+
+}
+</script>
