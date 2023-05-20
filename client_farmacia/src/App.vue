@@ -1,30 +1,42 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <v-app>
+    <v-main>
+      <nav-bar-comp app></nav-bar-comp>
+      <Footer app></Footer>
+      <nav-drawer></nav-drawer>
+        <router-view />
+    </v-main>
+
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+
+import NavBarComp from '@/components/adds/NavBarComp.vue';
+import NavDrawer from '@/components/adds/NavDrawerComp.vue';
+import Footer from '@/components/adds/FooterComp.vue';
+
+//componente control scroll
+//import NiceScroller from '@/components/adds/ScrollerComp.vue';
+
+export default {
+  name: 'App',
+
+  components: {
+    NavBarComp,
+    NavDrawer,
+    Footer,
+    // NiceScroller
+  },
+
+  data: () => ({
+    //
+  }),
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+</script>
+<style>
+#fixedtop {
+  position: absolute;
+  display: block;
 }
 </style>
