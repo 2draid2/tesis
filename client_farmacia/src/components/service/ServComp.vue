@@ -1,7 +1,7 @@
     <!--card lateral-->
-<template>
-<v-card>
-       <farm-serv v-on:select="selected"></farm-serv>
+<template id="filterSection">
+<v-card >
+       <farm-serv></farm-serv>
 </v-card>
       <!--overlay para cargando...-->
   <v-overlay :model-value="overlay" class="align-center justify-center">
@@ -27,9 +27,13 @@ export default {
     overlay: false,
     loaded: false,
     loading: false,
-    id: 0
+    id: 0,
+    offsetHeight: 0,
 
   }),
+   
+  computed(){
+  },
 
   created() {
     this.cargar_datos()
@@ -40,7 +44,7 @@ export default {
     ...mapMutations('users', ['SET_USER_LIST']),
     async cargar_datos() {
       //
-      this.farmlist = await this.lister(this.params)
+      //this.farmlist = await this.lister(this.params)
       //users(this.farmlist),
       console.log(store.state)
     },

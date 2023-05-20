@@ -1,6 +1,6 @@
 <template>
    <v-container class="text-center">
-      <v-img v-bind:src="require('../assets/end.jpg')">
+      <v-img v-bind:src="require('../assets/icons/03.png')">
          <h1>Pagina por comenzar a crear. 
          <v-icon color="yellow" left class="mr-2">mdi mdi-alert</v-icon>
          </h1>

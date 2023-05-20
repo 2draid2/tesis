@@ -4,11 +4,13 @@ import { getToken } from '@/utils/utils';
 axiosInstance.defaults.headers.common['x-token'] = getToken()
 
 export async function lister(__, parm) {
-  const skip= (parm.skip-1)*25
-   // console.log("jhbjhljhu", skip)
-  const res = await axiosInstance.get(`/${skip}`);
-  //console.log("jhbjhljhu", res)
-   return res.data;
+  
+
+    const skip= (parm-1)*25
+    //console.log("lister else", skip)
+    const res = await axiosInstance.get(`/${skip}`);
+    return res.data;
+    //console.log("jhbjhljhu", res)
 }
 export async function leng(__, ) {
   const res = await axiosInstance.get(`/`);

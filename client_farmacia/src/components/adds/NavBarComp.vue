@@ -1,21 +1,11 @@
 <template>
   <v-container>
     <v-app-bar class="d-flex align-center">
-      <v-btn>
-        <v-icon height="48" color="yellow" left class="mr-2">mdi mdi-signature</v-icon>
-        DRAID
+      <v-btn to="/about">
+        <v-icon height="48" left class="mr-2">mdi mdi-signature</v-icon>
+          <h2>DRAID</h2>
       </v-btn>
       <v-spacer></v-spacer>
-      <v-container v-model="drawer" permanent>
-        <v-text-field v-model="item_s" :loading="loading" density="compact" variant="solo"
-          label="Search pills" single-line hide-details>
-        </v-text-field>
-      </v-container>
-      <v-btn :loading="loading" :disabled="this.item_s === '' || this.item_s === null" height="48" @click="search()">
-        <v-icon left height="48" class="mr-2">
-          mdi mdi-magnify
-        </v-icon>
-      </v-btn>
       <v-btn height="48" text @click="toggleTheme" class="">
         <v-icon height="48" class="mr-2">
           mdi mdi-brightness-6

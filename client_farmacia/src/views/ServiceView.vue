@@ -1,11 +1,9 @@
 <template>
   <v-navigation-drawer permanent>
-    <serv v-on:select="selected"></serv>
+    <serv></serv>
   </v-navigation-drawer>
-  <v-container>
-    <med-serv v-bind:pass="id">
-  </med-serv>
-  </v-container>
+    <med-serv>
+    </med-serv>
 <!--overlay para cargando...-->
   <v-overlay :model-value="overlay" class="align-center justify-center">
     <v-progress-circular color="primary" indeterminate size="64"></v-progress-circular>
