@@ -1,42 +1,61 @@
 <template>
-  <v-card class="mx-auto" max-width="400">
-    <v-card-title>
-      <v-text-field :loading="loading" v-model="item_s" density="compact" variant="solo" label="Search pills"
-        append-inner-icon="mdi-magnify" single-line hide-details @click:append-inner="search"></v-text-field>
-        </v-card-title>
-
-    <v-divider></v-divider>
-
-    <v-virtual-scroll :items="items" height="390" item-height="40">
-      <template v-slot:default="{ item }">
-        <v-list-item :title="item.nombre" :subtitle="item.direccion" @click="select(item.f_id)"
-          @click:append-inner="onClick" variant="tonal">
+  <v-table
+   fixed-header
+    height="70vh"
+    max-width="400px"
+  >
+    <thead>
+      <tr>
+        <th class="text-left">
+          <v-text-field
+          :loading="loading"
+          density="compact"
+          label="Search"
+          append-inner-icon="mdi-magnify"
+          single-line
+          hide-details
+          @click:append-inner="search"
+        ></v-text-field>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <v-list>  
+         <v-list-item
+         v-for="item, i in items"
+         :key="i"
+          :value="item"
+          active-color="primary"
+          rounded="shaped"
+          @click="select(item.f_id)"
+        >
           <template v-slot:prepend>
-            <v-icon class="bg-primary">mdi-home</v-icon>
+            <v-icon :icon="item.icon"></v-icon>
           </template>
-
-          <template v-slot:append>
-            <v-btn icon="mdi-view-headline" size="x-small"></v-btn>
-          </template>
+  
+          <v-list-item-title v-text="item.f_id+' '+ item.nombre"></v-list-item-title>
         </v-list-item>
-      </template>
+      </v-list>
+    </tbody>
+  </v-table>
 
-    </v-virtual-scroll>
-    <div class="text-center">
+  <!--paginacion-->
+  <v-pagination
+  v-model="page"
+  :length="params.leng"
+  rounded="circle"
+></v-pagination>
+  
+  <!--overlay para cargando...--> 
+     <v-overlay :model-value="overlay" contained class="align-center justify-center">
+        <v-progress-circular color="black" indeterminate size="64"></v-progress-circular>
+      </v-overlay>
+   
 
-      <!--pagination...-->
-
-      <v-pagination v-model="page" :length="params.leng" :total-visible="1"></v-pagination>
-    </div>
-    <v-overlay :model-value="overlay" contained class="align-center justify-center">
-      <v-progress-circular color="black" indeterminate size="64"></v-progress-circular>
-    </v-overlay>
-  </v-card>
-
-  <!--overlay para cargando...-->
+    
 </template>
 <script>
-import store from '@/store';
+//import store from '@/store';
 import { mapActions, mapMutations } from 'vuex';
 
 export default {
@@ -49,6 +68,7 @@ export default {
     loaded: false,
     loading: false,
     item_s: '',
+    sticky: 'true',
     page: 1,
   }),
 
@@ -79,6 +99,7 @@ export default {
       this.params.leng = this.params.leng[0].len / 25 + 1
       this.overlay = !this.overlay
       this.SET_FARM_LIST(this.items)
+           // console.log('farm serv', this.items)
     },
 
 

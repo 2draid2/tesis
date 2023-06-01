@@ -14,7 +14,7 @@ import Serv from "../components/service/ServComp.vue";
 import MedServ from "../components/service/MedServComp.vue";
 
 export default {
-  name: 'Service',
+  name: 'ServiceComp',
 
   data: () => ({
     id: 0

@@ -1,6 +1,7 @@
 <template>
   <v-container>
     <v-app-bar class="d-flex align-center">
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <v-btn to="/about">
         <v-icon height="48" left class="mr-2">mdi mdi-signature</v-icon>
           <h2>DRAID</h2>
@@ -33,7 +34,7 @@
 </template>
  
 <script>
-import { VNavigationDrawer } from 'vuetify/lib/components';
+//import { VNavigationDrawer } from 'vuetify/lib/components';
 import { useTheme } from 'vuetify'
 
 
@@ -71,7 +72,7 @@ export default {
     },
 
   },
-  components: { VNavigationDrawer }
+  //components: { VNavigationDrawer }
 }
 </script>
  

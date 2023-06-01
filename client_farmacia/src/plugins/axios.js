@@ -73,8 +73,8 @@ const headers = {
   }
 const axiosInstance = axios.create({
     timeout: 3600000,
-    baseURL: process.env.URL_BACK,
-    baseURL: 'http://192.168.42.129:4000/api/farmacias',
+    //baseURL: process.env.URL_BACK,
+    baseURL: 'http://192.168.43.1:4000/api/farmacias',
     headers
 })
 

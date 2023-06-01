@@ -12,13 +12,13 @@ export async function lister(__, parm) {
     return res.data;
     //console.log("jhbjhljhu", res)
 }
-export async function leng(__, ) {
+export async function leng( ) {
   const res = await axiosInstance.get(`/`);
   //console.log("leng f", res.data[0].len)
    return res.data;
 }
-export async function Farm_id(__, parm) {
-  const id= this.parm
+export async function Farm_id( parm) {
+  const id= parm
   const res = await axiosInstance.get(`/id/${id}`);
   console.log("leng f", res.data[0].len)
    return res.data;
