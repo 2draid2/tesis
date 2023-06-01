@@ -48,7 +48,7 @@ const updateFarmaciaId = async (req, res) => {
       const { a_m_id, nombre, direccion } = req.body;
       if (id === undefined || a_m_id === undefined || nombre === undefined || direccion === undefined) {
          res.status(400).json({ message: "peticion erronea, por favor llene todos los campos" });
-      };
+      }
       const farmacia = {a_m_id, nombre, direccion };
       const connection = await getConnection();
       const result = await connection.query("UPDATE farmacias SET ? WHERE ?", [farmacia, id]);
@@ -82,7 +82,7 @@ const addFarmacia = async (req, res) => {
       const { a_m_id, nombre, direccion } = req.body;
       if (a_m_id === undefined || nombre === undefined || direccion === undefined) {
          res.status(400).json({ message: "peticion erronea, por favor llene todos los campos" });
-      };
+      }
       const farmacia = { a_m_id, nombre, direccion };
       const connection = await getConnection();
       const result = await connection.query("INSERT INTO farmacias SET ?", farmacia);

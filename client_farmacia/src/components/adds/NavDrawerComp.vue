@@ -1,7 +1,9 @@
     <!--card lateral-->
 <template>
    <v-container>
-      <v-navigation-drawer permanent>
+      <v-navigation-drawer
+      expand-on-hover
+      rail>
          <v-list nav>
                <v-list-item v-bind:prepend-avatar="require('../../assets/'+ this.foto)" :title="enline" nav>
                   <template v-slot:append>

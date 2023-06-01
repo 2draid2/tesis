@@ -1,7 +1,7 @@
     <!--card lateral-->
-<template id="filterSection">
-<v-card >
-       <farm-serv></farm-serv>
+<template>
+<v-card>
+      <farm-serv></farm-serv>
 </v-card>
       <!--overlay para cargando...-->
   <v-overlay :model-value="overlay" class="align-center justify-center">
@@ -16,7 +16,7 @@ import FarmServ from "./subservice/FarmServComp.vue";
 //import NiceScroller from '@/components/adds/ScrollerComp.vue';
 
 export default {
-  name: 'Serv',
+  name: 'ServComp',
 
   components: {
     FarmServ,

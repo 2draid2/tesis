@@ -4,7 +4,7 @@
       <nav-bar-comp app></nav-bar-comp>
       <Footer app></Footer>
       <nav-drawer></nav-drawer>
-        <router-view />
+      <router-view />
     </v-main>
 
   </v-app>
